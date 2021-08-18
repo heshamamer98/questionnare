@@ -1,0 +1,739 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'blog/style.css' %}">
+    <title>Women's Life</title>
+</head>
+
+<body>
+    <section id="about">
+        <div class="logo">Women's Life</div>
+        <img src="/media/women.JPG" class="bg">
+        <div class="content">
+            <h2>Let's Make <br>Every Possible</h2>
+            <p>This site helps you to deal with the violence that you are exposed to my dear woman. Here you can answer
+                these questions and find help.
+                We hope you get rid of all violence as soon as possible, Thank you.</p>
+            <a href="#question">Get Started</a>
+        </div>
+    </section>
+    <div class="menuToggle" onclick="toggleMenu();"></div>
+    <div class="navigation">
+        <ul>
+            <li><a href="{% url 'blog-home' %}">Home</a></li>
+            <li><a href="{% url 'blog-home' %}">Question</a></li>
+            <li><a href="{% url 'blog-information' %}">Information</a></li>
+        </ul>
+        <div class="socialBar">
+            <ul>
+                <li><a href="#"><img src="/media/facebook.png"></a></li>
+                <li><a href="#"><img src="/media/instagram.png"></a></li>
+                <li><a href="#"><img src="/media/twitter.png"></a></li>
+            </ul>
+            <a href="mailto:you@email.com" class="emailBx"><img src="/media/email.png"></a>
+        </div>
+    </div>
+
+    <h2 class="title" id="question">Answer This Questions</h2>
+    <div class="cardContainer">
+        <div class="card" style="background-color: white;">
+            <h2 class="questions" style="color: black;">Are you under 18?</h2>
+            <div class="candidatos"> 
+                <div class="parcial"> 
+                    <div class="info"> 
+                        <div class="nome black">Yes</div> 
+                        <div class="percentage-num black">{{result1_yes}}%</div> 
+                    </div> 
+                    <div class="progressBar">
+                        <div class="percentagem" style="width: {{result1_yes}}%;"></div>
+                    </div>
+                </div> 
+            </div> 
+
+            <div class="candidatos"> 
+                <div class="parcial"> 
+                    <div class="info"> 
+                        <div class="nome black">No</div> 
+                        <div class="percentage-num black">{{result1_no}}%</div> 
+                    </div> 
+                    <div class="progressBar">
+                        <div class="percentagem" style="width: {{result1_no}}%;"></div>
+                    </div>
+                </div> 
+            </div> 
+        </div>
+        <div class="card" style="background-color:#5c1696;">
+            <h2 class="questions">Are you exposed to violence?</h2>
+            <div class="candidatos"> 
+                <div class="parcial"> 
+                    <div class="info"> 
+                        <div class="nome">Yes</div> 
+                        <div class="percentage-num">{{result2_yes}}%</div> 
+                    </div> 
+                    <div class="progressBar">
+                        <div class="percentagem" style="width: {{result2_yes}}%;"></div>
+                    </div>
+                </div> 
+            </div> 
+
+            <div class="candidatos"> 
+                <div class="parcial"> 
+                    <div class="info"> 
+                        <div class="nome">No</div> 
+                        <div class="percentage-num">{{result2_no}}%</div> 
+                    </div> 
+                    <div class="progressBar">
+                        <div class="percentagem" style="width: {{result2_no}}%;"></div>
+                    </div>
+                </div> 
+            </div> 
+        </div>
+
+        <div class="card" style="background-color: #5c1696;">
+            <h2 class="questions">Do You Have Children?</h2>
+            <div class="candidatos"> 
+                <div class="parcial"> 
+                    <div class="info"> 
+                        <div class="nome">Yes</div> 
+                        <div class="percentage-num">{{result3_yes}}%</div> 
+                    </div> 
+                    <div class="progressBar">
+                        <div class="percentagem" style="width: {{result3_yes}}%;"></div>
+                    </div>
+                </div> 
+            </div> 
+
+            <div class="candidatos"> 
+                <div class="parcial"> 
+                    <div class="info"> 
+                        <div class="nome">No</div> 
+                        <div class="percentage-num">{{result3_no}}%</div> 
+                    </div> 
+                    <div class="progressBar">
+                        <div class="percentagem" style="width: {{result3_no}}%;"></div>
+                    </div>
+                </div> 
+            </div> 
+        </div>
+        <div class="card" style="background-color: white;">
+            <h2 class="questions" style="color: black;">Are you married?</h2>
+            <div class="candidatos"> 
+                <div class="parcial"> 
+                    <div class="info"> 
+                        <div class="nome black">Yes</div> 
+                        <div class="percentage-num black">{{result4_yes}}%</div> 
+                    </div> 
+                    <div class="progressBar">
+                        <div class="percentagem" style="width: {{result4_yes}}%;"></div>
+                    </div>
+                </div> 
+            </div> 
+
+            <div class="candidatos"> 
+                <div class="parcial"> 
+                    <div class="info"> 
+                        <div class="nome black">No</div> 
+                        <div class="percentage-num black">{{result4_no}}%</div> 
+                    </div> 
+                    <div class="progressBar">
+                        <div class="percentagem" style="width: {{result4_no}}%;"></div>
+                    </div>
+                </div> 
+            </div> 
+        </div>
+
+        <div class="card" style="background-color: white;">
+            <h2 class="questions" style="color: black;">Are your children exposed to violence?</h2>
+            <div class="candidatos"> 
+                <div class="parcial"> 
+                    <div class="info"> 
+                        <div class="nome black">Yes</div> 
+                        <div class="percentage-num black">{{result5_yes}}%</div> 
+                    </div> 
+                    <div class="progressBar">
+                        <div class="percentagem" style="width: {{result5_yes}}%;"></div>
+                    </div>
+                </div> 
+            </div> 
+
+            <div class="candidatos"> 
+                <div class="parcial"> 
+                    <div class="info"> 
+                        <div class="nome black">No</div> 
+                        <div class="percentage-num black">{{result5_no}}%</div> 
+                    </div> 
+                    <div class="progressBar">
+                        <div class="percentagem" style="width: {{result5_no}}%;"></div>
+                    </div>
+                </div> 
+            </div> 
+        </div>
+        <div class="card" style="background-color:#5c1696;">
+            <h2 class="questions">Are you daily exposed to violence daily?</h2>
+            <div class="candidatos"> 
+                <div class="parcial"> 
+                    <div class="info"> 
+                        <div class="nome">Yes</div> 
+                        <div class="percentage-num">{{result6_yes}}%</div> 
+                    </div> 
+                    <div class="progressBar">
+                        <div class="percentagem" style="width: {{result6_yes}}%;"></div>
+                    </div>
+                </div> 
+            </div> 
+
+            <div class="candidatos"> 
+                <div class="parcial"> 
+                    <div class="info"> 
+                        <div class="nome">No</div> 
+                        <div class="percentage-num">{{result6_no}}%</div> 
+                    </div> 
+                    <div class="progressBar">
+                        <div class="percentagem" style="width: {{result6_no}}%;"></div>
+                    </div>
+                </div> 
+            </div> 
+        </div>
+
+        <div class="card" style="background-color: #5c1696;">
+            <h2 class="questions">Are you exposed more than once a day to violence?</h2>
+            <div class="candidatos"> 
+                <div class="parcial"> 
+                    <div class="info"> 
+                        <div class="nome">Yes</div> 
+                        <div class="percentage-num">{{result7_yes}}%</div> 
+                    </div> 
+                    <div class="progressBar">
+                        <div class="percentagem" style="width: {{result7_yes}}%;"></div>
+                    </div>
+                </div> 
+            </div> 
+
+            <div class="candidatos"> 
+                <div class="parcial"> 
+                    <div class="info"> 
+                        <div class="nome">No</div> 
+                        <div class="percentage-num">{{result7_no}}%</div> 
+                    </div> 
+                    <div class="progressBar">
+                        <div class="percentagem" style="width: {{result7_no}}%;"></div>
+                    </div>
+                </div> 
+            </div> 
+        </div>
+        <div class="card" style="background-color:white;">
+            <h2 class="questions" style="color: black;">Are you exposed to violence when you refrain from doing
+                something?</h2>
+                <div class="candidatos"> 
+                    <div class="parcial"> 
+                        <div class="info"> 
+                            <div class="nome black">Yes</div> 
+                            <div class="percentage-num black">{{result8_yes}}%</div> 
+                        </div> 
+                        <div class="progressBar">
+                            <div class="percentagem" style="width: {{result8_yes}}%;"></div>
+                        </div>
+                    </div> 
+                </div> 
+    
+                <div class="candidatos"> 
+                    <div class="parcial"> 
+                        <div class="info"> 
+                            <div class="nome black">No</div> 
+                            <div class="percentage-num black">{{result8_no}}%</div> 
+                        </div> 
+                        <div class="progressBar">
+                            <div class="percentagem" style="width: {{result8_no}}%;"></div>
+                        </div>
+                    </div> 
+                </div> 
+        </div>
+
+        <div class="card" style="background-color: white;">
+            <h2 class="questions" style="color: black;">By whom you being violenced?</h2>
+            <div class="candidatos"> 
+                <div class="parcial"> 
+                    <div class="info"> 
+                        <div class="nome black">The Husband</div> 
+                        <div class="percentage-num black">{{result9_husband}}%</div> 
+                    </div> 
+                    <div class="progressBar">
+                        <div class="percentagem" style="width: {{result9_husband}}%;"></div>
+                    </div>
+                </div> 
+            </div> 
+
+            <div class="candidatos"> 
+                <div class="parcial"> 
+                    <div class="info"> 
+                        <div class="nome black">The Parents</div> 
+                        <div class="percentage-num black">{{result9_parents}}%</div> 
+                    </div> 
+                    <div class="progressBar">
+                        <div class="percentagem" style="width: {{result9_parents}}%;"></div>
+                    </div>
+                </div> 
+            </div> 
+
+            <div class="candidatos"> 
+                <div class="parcial"> 
+                    <div class="info"> 
+                        <div class="nome black">Others</div> 
+                        <div class="percentage-num black">{{result9_others}}%</div> 
+                    </div> 
+                    <div class="progressBar">
+                        <div class="percentagem" style="width: {{result9_others}}%;"></div>
+                    </div>
+                </div> 
+            </div> 
+
+            <div class="candidatos"> 
+                <div class="parcial"> 
+                    <div class="info"> 
+                        <div class="nome black">No one</div> 
+                        <div class="percentage-num black">{{result9_one}}%</div> 
+                    </div> 
+                    <div class="progressBar">
+                        <div class="percentagem" style="width: {{result9_one}}%;"></div>
+                    </div>
+                </div> 
+            </div> 
+        </div>
+        <div class="card" style="background-color:#5c1696;">
+            <h2 class="questions">By whom the children being violated?</h2>
+            <div class="candidatos"> 
+                <div class="parcial"> 
+                    <div class="info"> 
+                        <div class="nome">The father</div> 
+                        <div class="percentage-num">{{result10_father}}%</div> 
+                    </div> 
+                    <div class="progressBar">
+                        <div class="percentagem" style="width: {{result10_father}}%;"></div>
+                    </div>
+                </div> 
+            </div> 
+
+            <div class="candidatos"> 
+                <div class="parcial"> 
+                    <div class="info"> 
+                        <div class="nome">Husband's family</div> 
+                        <div class="percentage-num">{{result10_husband}}%</div> 
+                    </div> 
+                    <div class="progressBar">
+                        <div class="percentagem" style="width: {{result10_husband}}%;"></div>
+                    </div>
+                </div> 
+            </div> 
+            <div class="candidatos"> 
+                <div class="parcial"> 
+                    <div class="info"> 
+                        <div class="nome">Others</div> 
+                        <div class="percentage-num">{{result10_others}}%</div> 
+                    </div> 
+                    <div class="progressBar">
+                        <div class="percentagem" style="width: {{result10_others}}%;"></div>
+                    </div>
+                </div> 
+            </div> 
+
+            <div class="candidatos"> 
+                <div class="parcial"> 
+                    <div class="info"> 
+                        <div class="nome">No one</div> 
+                        <div class="percentage-num">{{result10_one}}%</div> 
+                    </div> 
+                    <div class="progressBar">
+                        <div class="percentagem" style="width: {{result10_one}}%;"></div>
+                    </div>
+                </div> 
+            </div> 
+        </div>
+
+        <div class="card" style="background-color: #5c1696;">
+            <h2 class="questions">What type of violence you exposed to?</h2>
+            <div class="candidatos"> 
+                <div class="parcial"> 
+                    <div class="info"> 
+                        <div class="nome">Physical</div> 
+                        <div class="percentage-num">{{result11_physical}}%</div> 
+                    </div> 
+                    <div class="progressBar">
+                        <div class="percentagem" style="width: {{result11_physical}}%;"></div>
+                    </div>
+                </div> 
+            </div> 
+
+            <div class="candidatos"> 
+                <div class="parcial"> 
+                    <div class="info"> 
+                        <div class="nome">Psychologically</div> 
+                        <div class="percentage-num">{{result11_psychologically}}%</div> 
+                    </div> 
+                    <div class="progressBar">
+                        <div class="percentagem" style="width: {{result11_psychologically}}%;"></div>
+                    </div>
+                </div> 
+            </div> 
+            <div class="candidatos"> 
+                <div class="parcial"> 
+                    <div class="info"> 
+                        <div class="nome">Both</div> 
+                        <div class="percentage-num">{{result11_both}}%</div> 
+                    </div> 
+                    <div class="progressBar">
+                        <div class="percentagem" style="width: {{result11_both}}%;"></div>
+                    </div>
+                </div> 
+            </div> 
+
+            <div class="candidatos"> 
+                <div class="parcial"> 
+                    <div class="info"> 
+                        <div class="nome">I'm not get violated</div> 
+                        <div class="percentage-num">{{result11_violated}}%</div> 
+                    </div> 
+                    <div class="progressBar">
+                        <div class="percentagem" style="width: {{result11_violated}}%;"></div>
+                    </div>
+                </div> 
+            </div> 
+        </div>
+        <div class="card" style="background-color:white;">
+            <h2 class="questions" style="color: black;">What is the approximate percentage of your exposure to violence
+                or the exposure of your children?</h2>
+                <div class="candidatos"> 
+                    <div class="parcial"> 
+                        <div class="info"> 
+                            <div class="nome black">0-10</div> 
+                            <div class="percentage-num black">{{result12_answer1}}%</div> 
+                        </div> 
+                        <div class="progressBar">
+                            <div class="percentagem" style="width: {{result12_answer1}}%;"></div>
+                        </div>
+                    </div> 
+                </div> 
+    
+                <div class="candidatos"> 
+                    <div class="parcial"> 
+                        <div class="info"> 
+                            <div class="nome black">10-25</div> 
+                            <div class="percentage-num black">{{result12_answer2}}%</div> 
+                        </div> 
+                        <div class="progressBar">
+                            <div class="percentagem" style="width: {{result12_answer2}}%;"></div>
+                        </div>
+                    </div> 
+                </div> 
+
+                <div class="candidatos"> 
+                    <div class="parcial"> 
+                        <div class="info"> 
+                            <div class="nome black">25-60</div> 
+                            <div class="percentage-num black">{{result12_answer3}}%</div> 
+                        </div> 
+                        <div class="progressBar">
+                            <div class="percentagem" style="width: {{result12_answer3}}%;"></div>
+                        </div>
+                    </div> 
+                </div> 
+    
+                <div class="candidatos"> 
+                    <div class="parcial"> 
+                        <div class="info"> 
+                            <div class="nome black">60-90</div> 
+                            <div class="percentage-num black">{{result12_answer4}}%</div> 
+                        </div> 
+                        <div class="progressBar">
+                            <div class="percentagem" style="width: {{result12_answer4}}%;"></div>
+                        </div>
+                    </div> 
+                </div> 
+        </div>
+
+
+        <div class="card" style="background-color:white;">
+            <h2 class="questions" style="color: black;">Where are you from?</h2>
+                <div class="candidatos"> 
+                    <div class="parcial"> 
+                        <div class="info"> 
+                            <div class="nome black">City</div> 
+                            <div class="percentage-num black">{{result13_city}}%</div> 
+                        </div> 
+                        <div class="progressBar">
+                            <div class="percentagem" style="width: {{result13_city}}%;"></div>
+                        </div>
+                    </div> 
+                </div> 
+    
+                <div class="candidatos"> 
+                    <div class="parcial"> 
+                        <div class="info"> 
+                            <div class="nome black">Countryside</div> 
+                            <div class="percentage-num black">{{result13_countryside}}%</div> 
+                        </div> 
+                        <div class="progressBar">
+                            <div class="percentagem" style="width: {{result13_countryside}}%;"></div>
+                        </div>
+                    </div> 
+                </div> 
+        </div>
+
+        <div class="card" style="background-color: #5c1696;">
+            <h2 class="questions">Marital status:</h2>
+            <div class="candidatos"> 
+                <div class="parcial"> 
+                    <div class="info"> 
+                        <div class="nome">Single</div> 
+                        <div class="percentage-num">{{result14_single}}%</div> 
+                    </div> 
+                    <div class="progressBar">
+                        <div class="percentagem" style="width: {{result14_single}}%;"></div>
+                    </div>
+                </div> 
+            </div> 
+
+            <div class="candidatos"> 
+                <div class="parcial"> 
+                    <div class="info"> 
+                        <div class="nome">Married</div> 
+                        <div class="percentage-num">{{result14_married}}%</div> 
+                    </div> 
+                    <div class="progressBar">
+                        <div class="percentagem" style="width: {{result14_married}}%;"></div>
+                    </div>
+                </div> 
+            </div> 
+            <div class="candidatos"> 
+                <div class="parcial"> 
+                    <div class="info"> 
+                        <div class="nome">Divorced</div> 
+                        <div class="percentage-num">{{result14_divorced}}%</div> 
+                    </div> 
+                    <div class="progressBar">
+                        <div class="percentagem" style="width: {{result14_divorced}}%;"></div>
+                    </div>
+                </div> 
+            </div> 
+
+            <div class="candidatos"> 
+                <div class="parcial"> 
+                    <div class="info"> 
+                        <div class="nome">Widow</div> 
+                        <div class="percentage-num">{{result14_widow}}%</div> 
+                    </div> 
+                    <div class="progressBar">
+                        <div class="percentagem" style="width: {{result14_widow}}%;"></div>
+                    </div>
+                </div> 
+            </div> 
+        </div>
+
+        
+        <div class="card" style="background-color: #5c1696;">
+            <h2 class="questions">Your educational attainment:</h2>
+            <div class="candidatos"> 
+                <div class="parcial"> 
+                    <div class="info"> 
+                        <div class="nome">Illiterate</div> 
+                        <div class="percentage-num">{{result15_illiterate}}%</div> 
+                    </div> 
+                    <div class="progressBar">
+                        <div class="percentagem" style="width: {{result15_illiterate}}%;"></div>
+                    </div>
+                </div> 
+            </div> 
+
+            <div class="candidatos"> 
+                <div class="parcial"> 
+                    <div class="info"> 
+                        <div class="nome">I can read and write</div> 
+                        <div class="percentage-num">{{result15_read}}%</div> 
+                    </div> 
+                    <div class="progressBar">
+                        <div class="percentagem" style="width: {{result15_read}}%;"></div>
+                    </div>
+                </div> 
+            </div> 
+            <div class="candidatos"> 
+                <div class="parcial"> 
+                    <div class="info"> 
+                        <div class="nome">Middle education</div> 
+                        <div class="percentage-num">{{result15_middle}}%</div> 
+                    </div> 
+                    <div class="progressBar">
+                        <div class="percentagem" style="width: {{result15_middle}}%;"></div>
+                    </div>
+                </div> 
+            </div> 
+
+            <div class="candidatos"> 
+                <div class="parcial"> 
+                    <div class="info"> 
+                        <div class="nome">High education</div> 
+                        <div class="percentage-num">{{result15_high}}%</div> 
+                    </div> 
+                    <div class="progressBar">
+                        <div class="percentagem" style="width: {{result15_high}}%;"></div>
+                    </div>
+                </div> 
+            </div> 
+        </div>
+
+        <div class="card" style="background-color:white;">
+            <h2 class="questions" style="color: black;">Your husband educational attainment:</h2>
+                <div class="candidatos"> 
+                    <div class="parcial"> 
+                        <div class="info"> 
+                            <div class="nome black">Educated</div> 
+                            <div class="percentage-num black">{{result16_educated}}%</div> 
+                        </div> 
+                        <div class="progressBar">
+                            <div class="percentagem" style="width: {{result16_educated}}%;"></div>
+                        </div>
+                    </div> 
+                </div> 
+    
+                <div class="candidatos"> 
+                    <div class="parcial"> 
+                        <div class="info"> 
+                            <div class="nome black">Uneducated</div> 
+                            <div class="percentage-num black">{{result16_uneducated}}%</div> 
+                        </div> 
+                        <div class="progressBar">
+                            <div class="percentagem" style="width: {{result16_uneducated}}%;"></div>
+                        </div>
+                    </div> 
+                </div> 
+        </div>
+
+        <div class="card" style="background-color:white;">
+            <h2 class="questions" style="color: black;">How many children do you have?</h2>
+                <div class="candidatos"> 
+                    <div class="parcial"> 
+                        <div class="info"> 
+                            <div class="nome black">0-3</div> 
+                            <div class="percentage-num black">{{result17_zerotothree}}%</div> 
+                        </div> 
+                        <div class="progressBar">
+                            <div class="percentagem" style="width: {{result17_zerotothree}}%;"></div>
+                        </div>
+                    </div> 
+                </div> 
+    
+                <div class="candidatos"> 
+                    <div class="parcial"> 
+                        <div class="info"> 
+                            <div class="nome black">3-5</div> 
+                            <div class="percentage-num black">{{result17_threetofive}}%</div> 
+                        </div> 
+                        <div class="progressBar">
+                            <div class="percentagem" style="width: {{result17_threetofive}}%;"></div>
+                        </div>
+                    </div> 
+                </div> 
+
+                <div class="candidatos"> 
+                    <div class="parcial"> 
+                        <div class="info"> 
+                            <div class="nome black">5-7</div> 
+                            <div class="percentage-num black">{{result17_fivetoseven}}%</div> 
+                        </div> 
+                        <div class="progressBar">
+                            <div class="percentagem" style="width: {{result17_fivetoseven}}%;"></div>
+                        </div>
+                    </div> 
+                </div> 
+    
+                <div class="candidatos"> 
+                    <div class="parcial"> 
+                        <div class="info"> 
+                            <div class="nome black">More than 7</div> 
+                            <div class="percentage-num black">{{result17_morethan}}%</div> 
+                        </div> 
+                        <div class="progressBar">
+                            <div class="percentagem" style="width: {{result17_morethan}}%;"></div>
+                        </div>
+                    </div> 
+                </div> 
+        </div>
+
+
+        <div class="card" style="background-color: #5c1696;">
+            <h2 class="questions">What are the most types of violence that you are exposed to?</h2>
+            <div class="candidatos"> 
+                <div class="parcial"> 
+                    <div class="info"> 
+                        <div class="nome">Physical violence</div> 
+                        <div class="percentage-num">{{result18_physicalviolence}}%</div> 
+                    </div> 
+                    <div class="progressBar">
+                        <div class="percentagem" style="width: {{result18_physicalviolence}}%;"></div>
+                    </div>
+                </div> 
+            </div> 
+
+            <div class="candidatos"> 
+                <div class="parcial"> 
+                    <div class="info"> 
+                        <div class="nome">Psychological violence</div> 
+                        <div class="percentage-num">{{result18_psychologicalviolence}}%</div> 
+                    </div> 
+                    <div class="progressBar">
+                        <div class="percentagem" style="width: {{result18_psychologicalviolence}}%;"></div>
+                    </div>
+                </div> 
+            </div> 
+            <div class="candidatos"> 
+                <div class="parcial"> 
+                    <div class="info"> 
+                        <div class="nome">Verbal violence</div> 
+                        <div class="percentage-num">{{result18_verbalviolence}}%</div> 
+                    </div> 
+                    <div class="progressBar">
+                        <div class="percentagem" style="width: {{result18_verbalviolence}}%;"></div>
+                    </div>
+                </div> 
+            </div> 
+
+            <div class="candidatos"> 
+                <div class="parcial"> 
+                    <div class="info"> 
+                        <div class="nome">Other</div> 
+                        <div class="percentage-num">{{result18_otherviolence}}%</div> 
+                    </div> 
+                    <div class="progressBar">
+                        <div class="percentagem" style="width: {{result18_otherviolence}}%;"></div>
+                    </div>
+                </div> 
+            </div> 
+        </div>
+
+
+    </div>
+
+    <div class="btn">
+    <a class="linkToHome" href="{% url 'blog-home' %}">Go To Questions</a>
+    </div>
+
+    <script type="text/javascript">
+        function toggleMenu() {
+            var menuToggle = document.querySelector('.menuToggle');
+            var navigation = document.querySelector('.navigation');
+            menuToggle.classList.toggle('active')
+            navigation.classList.toggle('active')
+        }
+
+        var parcialDivs = document.getElementsByClassName('parcial');
+        for(i = 0; i < parcialDivs.length;i++){
+            var new_width = document.getElementsByClassName('parcial').getElementsByClassName('percentage-num');
+            console.log(new_width);
+        }
+    </script>
+</body>
+
+</html>

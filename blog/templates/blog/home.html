@@ -1,0 +1,307 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'blog/style.css' %}">
+    <title>Women's Life</title>
+</head>
+
+<body>
+    <section id="about">
+        <div class="logo">Women's Life</div>
+        <img src="/media/women.JPG" class="bg">
+        <div class="content">
+            <h2>Let's Make <br>Every Possible</h2>
+            <p>This site helps you to deal with the violence that you are exposed to my dear woman. Here you can answer
+                these questions and find help.
+                We hope you get rid of all violence as soon as possible, Thank you.</p>
+            <a href="#question">Get Started</a>
+        </div>
+    </section>
+    <div class="menuToggle" onclick="toggleMenu();"></div>
+    <div class="navigation">
+        <ul>
+            <li><a href="{% url 'blog-home' %}">Home</a></li>
+            <li><a href="{% url 'blog-home' %}">Question</a></li>
+            <li><a href="{% url 'blog-information' %}">Information</a></li>
+        </ul>
+        <div class="socialBar">
+            <ul>
+                <li><a href="#"><img src="/media/facebook.png"></a></li>
+                <li><a href="#"><img src="/media/instagram.png"></a></li>
+                <li><a href="#"><img src="/media/twitter.png"></a></li>
+            </ul>
+            <a href="mailto:you@email.com" class="emailBx"><img src="/media/email.png"></a>
+        </div>
+    </div>
+
+    <h2 class="title" id="question">Answer This Questions</h2>
+    <div class="cardContainer">
+        <div class="card" style="background-color: white;">
+            <h2 class="questions" style="color: black;">Are you under 18?</h2>
+            <form method="POST" onsubmit="return checksubmit()">
+                {% csrf_token %}
+                <input type="radio" id="q1_yes" name="q1" value="yes">
+                <label for="yes" style="color: black;">Yes</label><br>
+
+                <input type="radio" id="q1_no" name="q1" value="no">
+                <label for="no" style="color: black;">No</label><br>
+        </div>
+        <div class="card" style="background-color:#5c1696;">
+            <h2 class="questions">Are you exposed to violence?</h2>
+                <input class="input" type="radio" id="q2_yes" name="q2" value="yes">
+                <label for="yes0">Yes</label><br>
+
+                <input class="input" type="radio" id="q2_no" name="q2" value="no">
+                <label for="no0">No</label><br>
+        </div>
+
+        <div class="card" style="background-color: #5c1696;">
+            <h2 class="questions">Do You Have Children?</h2>
+                <input class="input" type="radio" id="q3_yes" name="q3" value="yes">
+                <label for="yes1">Yes</label><br>
+
+                <input class="input" type="radio" id="q3_no" name="q3" value="no">
+                <label for="no1">No</label><br>
+        </div>
+        <div class="card" style="background-color: white;">
+            <h2 class="questions" style="color: black;">Are you married?</h2>
+                <input type="radio" id="q4_yes" name="q4" value="yes">
+                <label for="yes2" style="color: black;">Yes</label><br>
+
+                <input type="radio" id="q4_no" name="q4" value="no">
+                <label for="no2" style="color: black;">No</label><br>
+        </div>
+
+        <div class="card" style="background-color: white;">
+            <h2 class="questions" style="color: black;">Are your children exposed to violence?</h2>
+                <input type="radio" id="q5_yes" name="q5" value="yes">
+                <label for="yes3" style="color: black;">Yes</label><br>
+
+                <input type="radio" id="q5_no" name="q5" value="no">
+                <label for="no3" style="color: black;">No</label><br>
+        </div>
+        <div class="card" style="background-color:#5c1696;">
+            <h2 class="questions">Are you daily exposed to violence daily?</h2>
+                <input class="input" type="radio" id="q6_yes" name="q6" value="yes">
+                <label for="yes4">Yes</label><br>
+
+                <input class="input" type="radio" id="q6_no" name="q6" value="no">
+                <label for="no4">No</label><br>
+        </div>
+
+        <div class="card" style="background-color: #5c1696;">
+            <h2 class="questions">Are you exposed more than once a day to violence?</h2>
+                <input class="input" type="radio" id="q7_yes" name="q7" value="yes">
+                <label for="yes5">Yes</label><br>
+
+                <input class="input" type="radio" id="q7_no" name="q7" value="no">
+                <label for="no5">No</label><br>
+        </div>
+        <div class="card" style="background-color:white;">
+            <h2 class="questions" style="color: black;">Are you exposed to violence when you refrain from doing
+                something?</h2>
+                <input type="radio" id="q8_yes" name="q8" value="yes">
+                <label for="yes6" style="color: black;">Yes</label><br>
+
+                <input type="radio" id="q8_no" name="q8" value="no">
+                <label for="no6" style="color: black;">No</label><br>
+        </div>
+
+        <div class="card" style="background-color: white;">
+            <h2 class="questions" style="color: black;">By whom you being violenced?</h2>
+                <input type="radio" id="q9_husband" name="q9" value="husband">
+                <label for="husband" style="color: black;">The Husband</label><br>
+
+                <input type="radio" id="q9_parents" name="q9" value="parents">
+                <label for="parents" style="color: black;">The Parents</label><br>
+
+                <input type="radio" id="q9_others" name="q9" value="others">
+                <label for="others" style="color: black;">Others</label><br>
+
+                <input type="radio" id="q9_one" name="q9" value="one">
+                <label for="one" style="color: black;">No one</label><br>
+        </div>
+        <div class="card" style="background-color:#5c1696;">
+            <h2 class="questions">By whom the children being violated?</h2>
+                <input class="input" type="radio" id="q10_father" name="q10" value="father">
+                <label for="father">The father</label><br>
+
+                <input class="input" type="radio" id="q10_Husband's" name="q10" value="husband">
+                <label for="Husband's">Husband's family</label><br>
+
+                <input class="input" type="radio" id="q10_others" name="q10" value="others">
+                <label for="others0">Others</label><br>
+
+                <input class="input" type="radio" id="q10_one" name="q10" value="one">
+                <label for="one0">No one</label><br>
+        </div>
+
+        <div class="card" style="background-color: #5c1696;">
+            <h2 class="questions">What type of violence you exposed to?</h2>
+                <input class="input" type="radio" id="q11_physical" name="q11" value="physical">
+                <label for="physical">Physical</label><br>
+
+                <input class="input" type="radio" id="q11_psychologically" name="q11" value="psychologically">
+                <label for="psychologically">Psychologically</label><br>
+
+                <input class="input" type="radio" id="q11_both" name="q11" value="both">
+                <label for="both">Both</label><br>
+
+                <input class="input" type="radio" id="q11_violated" name="q11" value="violated">
+                <label for="violated">I'm not get violated</label><br>
+        </div>
+        <div class="card" style="background-color:white;">
+            <h2 class="questions" style="color: black;">What is the approximate percentage of your exposure to violence
+                or the exposure of your children?</h2>
+                <input type="radio" id="q12_answer1" name="q12" value="answer1">
+                <label for="yes11" style="color: black;">0-10</label><br>
+
+                <input type="radio" id="q12_answer2" name="q12" value="answer2">
+                <label for="no12" style="color: black;">10-25</label><br>
+
+                <input type="radio" id="q12_answer3" name="q12" value="answer3">
+                <label for="no13" style="color: black;">25-60</label><br>
+
+                <input type="radio" id="q12_answer4" name="q12" value="answer4">
+                <label for="no14" style="color: black;">60-90</label><br>
+        </div>
+
+        <div class="card" style="background-color: white;">
+            <h2 class="questions" style="color: black;">Where are you from?</h2>
+                <input type="radio" id="q13_city" name="q13" value="city">
+                <label for="city" style="color: black;">City</label><br>
+
+                <input type="radio" id="q13_countryside" name="q13" value="countryside">
+                <label for="countryside" style="color: black;">Countryside</label><br>
+        </div>
+        <div class="card" style="background-color:#5c1696;">
+            <h2 class="questions">Marital status:</h2>
+                <input class="input" type="radio" id="q14_single" name="q14" value="single">
+                <label for="single">Single</label><br>
+
+                <input class="input" type="radio" id="q14_married" name="q14" value="married">
+                <label for="married">Married</label><br>
+
+                <input class="input" type="radio" id="q14_divorced" name="q14" value="divorced">
+                <label for="divorced">Divorced</label><br>
+
+                <input class="input" type="radio" id="q14_widow" name="q14" value="widow">
+                <label for="widow">Widow</label><br>
+        </div>
+
+        <div class="card" style="background-color:#5c1696;">
+            <h2 class="questions">Your educational attainment:</h2>
+                <input class="input" type="radio" id="q15_illiterate" name="q15" value="illiterate">
+                <label for="illiterate">Illiterate</label><br>
+
+                <input class="input" type="radio" id="q15_read" name="q15" value="read">
+                <label for="read">I can read and write</label><br>
+
+                <input class="input" type="radio" id="q15_middle" name="q15" value="middle">
+                <label for="middle">Middle education</label><br>
+
+                <input class="input" type="radio" id="q15_high" name="q15" value="high">
+                <label for="high">High education</label><br>
+        </div>
+
+        <div class="card" style="background-color: white;">
+            <h2 class="questions" style="color: black;">Your husband educational attainment:</h2>
+                <input type="radio" id="q16_educated" name="q16" value="educated">
+                <label for="educated" style="color: black;">Educated</label><br>
+    
+                <input type="radio" id="q16_uneducated" name="q16" value="uneducated">
+                <label for="uneducated" style="color: black;">Uneducated</label><br>
+        </div>
+
+        <div class="card" style="background-color:white;">
+            <h2 class="questions" style="color: black;">How many children do you have?</h2>
+                <input type="radio" id="q17_zerotothree" name="q17" value="zerotothree">
+                <label for="zerotothree" style="color: black;">0-3</label><br>
+
+                <input type="radio" id="q17_threetofive" name="q17" value="threetofive">
+                <label for="threetofive" style="color: black;">3-5</label><br>
+
+                <input type="radio" id="q17_fivetoseven" name="q17" value="fivetoseven">
+                <label for="fivetoseven" style="color: black;">5-7</label><br>
+
+                <input type="radio" id="q17_morethan" name="q17" value="morethan">
+                <label for="morethan" style="color: black;">More than 7</label><br>
+        </div>
+
+        <div class="card" style="background-color:#5c1696;">
+            <h2 class="questions">What are the most types of violence that you are exposed to?</h2>
+                <input class="input" type="radio" id="q18_physicalviolence" name="q18" value="physicalviolence">
+                <label for="physicalviolence">Physical violence</label><br>
+
+                <input class="input" type="radio" id="q18_psychologicalviolence" name="q18" value="psychologicalviolence">
+                <label for="psychologicalviolence">Psychological violence</label><br>
+
+                <input class="input" type="radio" id="q18_verbalviolence" name="q18" value="verbalviolence">
+                <label for="verbalviolence">Verbal violence</label><br>
+
+                <input class="input" type="radio" id="q18_otherviolence" name="q18" value="otherviolence">
+                <label for="otherviolence">Other</label><br>
+        </div>
+
+
+    </div>
+
+    <div class="btn">        
+            <button type="submit" class="link">The Result</button>
+        </form>
+    </div>
+
+    <script type="text/javascript">
+        function toggleMenu() {
+            var menuToggle = document.querySelector('.menuToggle');
+            var navigation = document.querySelector('.navigation');
+            menuToggle.classList.toggle('active')
+            navigation.classList.toggle('active')
+        }
+
+        function checksubmit() {
+            if (
+                ( document.getElementById('q1_yes').checked || document.getElementById('q1_no').checked ) &&
+                ( document.getElementById('q2_yes').checked || document.getElementById('q2_no').checked ) &&
+                ( document.getElementById('q3_yes').checked || document.getElementById('q3_no').checked ) &&
+                ( document.getElementById('q4_yes').checked || document.getElementById('q4_no').checked ) &&
+                ( document.getElementById('q5_yes').checked || document.getElementById('q5_no').checked ) &&
+                ( document.getElementById('q6_yes').checked || document.getElementById('q6_no').checked ) &&
+                ( document.getElementById('q7_yes').checked || document.getElementById('q7_no').checked ) &&
+                ( document.getElementById('q8_yes').checked || document.getElementById('q8_no').checked ) &&
+                ( document.getElementById('q9_husband').checked || document.getElementById('q9_parents').checked ||
+                document.getElementById('q9_others').checked || document.getElementById('q9_one').checked ) &&
+                ( document.getElementById('q10_father').checked || document.getElementById("q10_Husband's").checked ||
+                document.getElementById('q10_others').checked || document.getElementById('q10_one').checked ) &&
+                ( document.getElementById('q11_physical').checked || document.getElementById('q11_psychologically').checked ||
+                document.getElementById('q11_both').checked || document.getElementById('q11_violated').checked ) &&
+                ( document.getElementById('q12_answer1').checked || document.getElementById('q12_answer2').checked ||
+                ( document.getElementById('q12_answer3').checked || document.getElementById('q12_answer4').checked ) &&
+                document.getElementById('q13_city').checked || document.getElementById('q13_countryside').checked ) &&
+                ( document.getElementById('q14_single').checked || document.getElementById('q14_married').checked ||
+                document.getElementById('q14_divorced').checked || document.getElementById('q14_widow').checked ) &&
+                ( document.getElementById('q15_illiterate').checked || document.getElementById('q15_read').checked ||
+                ( document.getElementById('q15_middle').checked || document.getElementById('q15_high').checked ) &&
+                document.getElementById('q16_educated').checked || document.getElementById('q16_uneducated').checked ) &&
+                ( document.getElementById('q17_zerotothree').checked || document.getElementById('q17_threetofive').checked ||
+                document.getElementById('q17_fivetoseven').checked || document.getElementById('q17_morethan').checked ) &&
+                ( document.getElementById('q18_physicalviolence').checked || document.getElementById('q18_psychologicalviolence').checked ||
+                document.getElementById('q18_verbalviolence').checked || document.getElementById('q18_otherviolence').checked )
+                ) {
+                    return true;
+                }else{
+                    alert("Answer all questions first");
+                    return false;
+                }
+        }
+
+        
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,93 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'blog/style.css' %}">
+    <title>Women's Life</title>
+</head>
+<body>
+
+    
+    <section id="about">
+        <div class="logo">Women's Life</div>
+        <img src="/media/women.JPG" class="bg">
+        <div class="content">
+            <h2 style="font-size: 2rem !important; margin-bottom: 1.5rem;">Here Some Information <br>may help you:</h2>
+            <ul>
+                <li class="ul-li">If you are experiencing violence, it may be helpful to reach out to family, friends and neighbors, to seek support from a hotline or, if safe, from online service for survivors of violence. Find out if local services (e.g. shelters, counselling) are open and reach out to them if available.</li>
+                <li class="ul-li">Make a safety plan in case the violence against you or your children escalates.</li>
+            </ul>
+            <a href="#article">This includes:</a>
+        </div>
+    </section>
+
+    <div class="artichal" id="article">
+        <section class="section">
+            <article>
+                <h3>1-</h3>
+                <p>Identifying a neighbour, friend, relative, colleague, or shelter to go to in case you need to leave the house immediately for safety.</p>
+            </article>
+            <article>
+                <h3>2-</h3>
+                <p>Have a plan for how you will exit the house safely and how you will reach there (e.g. transport).</p>
+            </article>
+            <article>
+                <h3>3-</h3>
+                <p>Keep a few essential items (e.g. identification documents, phone, money, medicines, and clothes) available, and a list of telephone numbers in case of an emergency.</p>
+            </article>
+            <article>
+                <h3>4-</h3>
+                <p>If possible, develop a code with a trusted neighbour so they can come to your aid in case of an emergency.</p>
+            </article>
+        </section>
+    </div>
+
+    <section id="about">
+        <img src="/media/sceard.JPG" class="bg second">
+        <div class="content">
+            <h2 style="font-size: 2rem !important; margin-bottom: 2rem;">What can I do to help someone I know <br>who is <b style="color: #ffa940;">experiencing</b> abuse?</h2>
+            <p style="margin-top: 1rem; margin-bottom: 1rem;">If you are concerned about a friend who may be experiencing domestic violence or abuse or feels unsafe around someone, review these tips on how to help them find safety and support <b style="color: #ffa940;">:</b></p>
+            <ul>
+                <li class="ul-li-color">If you are worried about a friend’s safety, stay in touch and be creative.</li>
+                <li class="ul-li">Ask your friend how they prefer to connect.</li>
+                <li class="ul-li-color">Be supportive and believe them.</li>
+                <li class="ul-li">Help them think through how to stay safe during COVID-19.</li>
+                <li class="ul-li-color">Respect their right to consent.</li>
+                <li class="ul-li">Respect their privacy.</li>
+                <li class="ul-li-color">Offer practical assistance and share resources.</li>
+                <li class="ul-li">Let your friend know they can talk with someone who has been trained to help. </li>
+            </ul>
+        </div>
+    </section>
+
+
+    <div class="menuToggle" onclick="toggleMenu();"></div>
+    <div class="navigation">
+        <ul>
+            <li><a href="{% url 'blog-home' %}">Home</a></li>
+            <li><a href="{% url 'blog-home' %}">Question</a></li>
+            <li><a href="{% url 'blog-information' %}">Information</a></li>
+        </ul>
+        <div class="socialBar">
+            <ul>
+                <li><a href="#"><img src="/media/facebook.png"></a></li>
+                <li><a href="#"><img src="/media/instagram.png"></a></li>
+                <li><a href="#"><img src="/media/twitter.png"></a></li>
+            </ul>
+            <a href="mailto:you@email.com" class="emailBx"><img src="/media/email.png"></a>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        function toggleMenu() {
+            var menuToggle = document.querySelector('.menuToggle');
+            var navigation = document.querySelector('.navigation');
+            menuToggle.classList.toggle('active')
+            navigation.classList.toggle('active')
+        }
+    </script>
+</body>
+</html>
